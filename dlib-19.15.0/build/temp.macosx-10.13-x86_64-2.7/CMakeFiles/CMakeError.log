@@ -1,0 +1,41 @@
+Determining if the include file pthread.h exists failed with the following output:
+Change Dir: /Users/leronjulian 1/Desktop/Gender_Recognition_Algorithm/dlib-19.15.0/build/temp.macosx-10.13-x86_64-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_643fa/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTC_643fa.dir/build.make CMakeFiles/cmTC_643fa.dir/build
+Building C object CMakeFiles/cmTC_643fa.dir/CheckIncludeFile.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_643fa.dir/CheckIncludeFile.c.o   -c "/Users/leronjulian 1/Desktop/Gender_Recognition_Algorithm/dlib-19.15.0/build/temp.macosx-10.13-x86_64-2.7/CMakeFiles/CMakeTmp/CheckIncludeFile.c"
+In file included from /Users/leronjulian 1/Desktop/Gender_Recognition_Algorithm/dlib-19.15.0/build/temp.macosx-10.13-x86_64-2.7/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:
+In file included from /usr/include/pthread.h:60:
+/usr/local/include/time.h:29:1: error: unknown type name 'int64_t'; did you mean '__int64_t'?
+int64_t av_gettime(void);
+^
+/usr/include/i386/_types.h:46:20: note: '__int64_t' declared here
+typedef long long               __int64_t;
+                                ^
+In file included from /Users/leronjulian 1/Desktop/Gender_Recognition_Algorithm/dlib-19.15.0/build/temp.macosx-10.13-x86_64-2.7/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:
+In file included from /usr/include/pthread.h:60:
+/usr/local/include/time.h:38:1: error: unknown type name 'int64_t'; did you mean '__int64_t'?
+int64_t av_gettime_relative(void);
+^
+/usr/include/i386/_types.h:46:20: note: '__int64_t' declared here
+typedef long long               __int64_t;
+                                ^
+In file included from /Users/leronjulian 1/Desktop/Gender_Recognition_Algorithm/dlib-19.15.0/build/temp.macosx-10.13-x86_64-2.7/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:
+/usr/include/pthread.h:226:66: error: unknown type name 'size_t'
+int pthread_attr_getguardsize(const pthread_attr_t * __restrict, size_t * __restrict);
+                                                                 ^
+/usr/include/pthread.h:243:43: error: unknown type name 'size_t'
+                void * _Nullable * _Nonnull __restrict, size_t * __restrict);
+                                                        ^
+/usr/include/pthread.h:250:66: error: unknown type name 'size_t'
+int pthread_attr_getstacksize(const pthread_attr_t * __restrict, size_t * __restrict);
+                                                                 ^
+/usr/include/pthread.h:511:1: error: unknown type name 'size_t'
+size_t pthread_get_stacksize_np(pthread_t);
+^
+6 errors generated.
+make[1]: *** [CMakeFiles/cmTC_643fa.dir/CheckIncludeFile.c.o] Error 1
+make: *** [cmTC_643fa/fast] Error 2
+
+

@@ -116,7 +116,7 @@ def facecrop(image):
 
 #Function that uploads picture to the algorithm
 def picUploader():
-	fileName = facecrop("girl.jpg")
+	fileName = facecrop("Amari.jpg")
 	return fileName
 
 
@@ -172,7 +172,7 @@ def faceDetection(img):
 			#Variable to create the feature vector
 			feat_vec = roi
 			#Will use standard deviation of the ROI for each region
-			features.append(np.std(feat_vec))
+			features.append(np.mean(feat_vec))
 
 			# show the particular face part
 			#cv2.imshow("ROI", roi)
@@ -186,6 +186,7 @@ def faceDetection(img):
 
 		#Adds gender for the CSV File
 		'''
+	
 		gender = re.findall(r"[\w']+", img)
 		gender = gender[1]
 		gender = gender.split('_')[1]
@@ -206,7 +207,7 @@ def trainData():
 def testData():
 	image = picUploader()
 
-	data = pd.read_csv("test.csv")
+	data = pd.read_csv("test2.csv")
 
 	#Creates test data for unseen image
 	testSet = [faceDetection(image)]

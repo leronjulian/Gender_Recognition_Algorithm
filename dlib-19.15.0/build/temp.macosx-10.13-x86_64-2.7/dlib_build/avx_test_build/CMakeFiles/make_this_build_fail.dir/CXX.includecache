@@ -1,0 +1,10 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/leronjulian 1/Desktop/Gender_Recognition_Algorithm/dlib-19.15.0/dlib/cmake_utils/test_for_avx/this_file_doesnt_compile.cpp
+
