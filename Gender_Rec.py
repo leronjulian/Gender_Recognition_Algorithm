@@ -24,6 +24,10 @@ import re
 import pandas as pd  
 import operator
 import math
+
+#for Tkinter
+from tkinter import *
+from tkinter import filedialog
  
 
 # =============== Function for uploading all files (3253 Files) ==========================
@@ -116,7 +120,8 @@ def facecrop(image):
 
 #Function that uploads picture to the algorithm
 def picUploader():
-	fileName = facecrop("Amari.jpg")
+	selectedFile = fileUploader()
+	fileName = facecrop(selectedFile)
 	return fileName
 
 
@@ -207,13 +212,11 @@ def trainData():
 def testData():
 	image = picUploader()
 
-	data = pd.read_csv("test2.csv")
+	data = pd.read_csv("mean.csv")
 
 	#Creates test data for unseen image
 	testSet = [faceDetection(image)]
 	test = pd.DataFrame(testSet)
-
-	print(testSet)
 
 	# Setting number of neighbors = 1
 	k = 5
@@ -233,6 +236,16 @@ def testData():
 	# Nearest neighbor
 	#print(neigh)
 
+#Function to select an image to upload
+def fileUploader():
+	root = Tk()
+	root.fileName = filedialog.askopenfilename( filetypes = (("Image Files", "*.jpg"), ("All files", "*.*")), title="Click on an Image to Upload")
+
+	fileName = root.fileName.split("/")
+
+	return(fileName[len(fileName) - 1])
+	
+	
 
 
 #The main function of the program
@@ -245,6 +258,5 @@ def main():
 	testData()
 	#===END Test===
 	#createCSV()
-	
 
 main()
