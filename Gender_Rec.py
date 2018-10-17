@@ -94,7 +94,6 @@ def knn(trainingSet, testInstance, k):
 
 # =============== Function for Image cropping Below ==========================
 def facecrop(image):
-	print("Cropping Image... \n")
 	facedata = "haarcascade_frontalface_alt.xml"
 	cascade = cv2.CascadeClassifier(facedata)
 
@@ -226,9 +225,9 @@ def testData():
 
 	
 	if(result == 0):
-		print("This is a male")
+		print("\n\nThis is a male")
 	else:
-		print("This is a female")
+		print("\n\nThis is a female")
 
 	# Predicted class
 	#print(result)
