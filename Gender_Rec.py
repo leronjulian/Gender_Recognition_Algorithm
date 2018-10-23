@@ -28,6 +28,9 @@ import math
 #for Tkinter
 from tkinter import *
 from tkinter import filedialog
+
+#For Path
+from pathlib import Path
  
 
 # =============== Function for uploading all files (3253 Files) ==========================
@@ -99,7 +102,6 @@ def facecrop(image):
 
 	img = cv2.imread(image)
 
-	print(img)
 	minisize = (img.shape[1],img.shape[0])
 	miniframe = cv2.resize(img, minisize)
 	
@@ -110,7 +112,7 @@ def facecrop(image):
 		cv2.rectangle(img, (x,y), (x+w,y+h), (255,255,255)) 
 		sub_face = img[y:y+h, x:x+w]
 		fname, ext = os.path.splitext(image)
-		cv2.imwrite(fname+"_cropped_"+ext, sub_face)
+		#cv2.imwrite(fname+"_cropped_"+ext, sub_face)
 
 	original_file_name = image.split('.')[0]
 
@@ -120,12 +122,15 @@ def facecrop(image):
 #Function that uploads picture to the algorithm
 def picUploader():
 	selectedFile = fileUploader()
+
 	fileName = facecrop(selectedFile)
-	return fileName
+
+	return selectedFile
 
 
 #Function that does the facial detection 
 def faceDetection(img):
+	path = os.path.abspath(img)
 	PREDICTOR_PATH = "shape_predictor_68_face_landmarks.dat"
 	# initialize dlib's face detector (HOG-based) and then create
 	# the facial landmark predictor
@@ -133,7 +138,7 @@ def faceDetection(img):
 	detector = dlib.get_frontal_face_detector()
 
 	# load the input image, resize it, and convert it to grayscale
-	image = cv2.imread(img)
+	image = cv2.imread(path)
 	image = imutils.resize(image, width=500)
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
@@ -141,7 +146,7 @@ def faceDetection(img):
 	rects = detector(gray, 1)
 
 	k = 0
-
+	
 	features = []
 	# loop over the face detections
 	for (i, rect) in enumerate(rects):
@@ -211,7 +216,7 @@ def trainData():
 def testData():
 	image = picUploader()
 
-	data = pd.read_csv("mean.csv")
+	data = pd.read_csv("Test_Data.csv")
 
 	#Creates test data for unseen image
 	testSet = [faceDetection(image)]
@@ -240,9 +245,10 @@ def fileUploader():
 	root = Tk()
 	root.fileName = filedialog.askopenfilename( filetypes = (("Image Files", "*.jpg"), ("All files", "*.*")), title="Click on an Image to Upload")
 
-	fileName = root.fileName.split("/")
+	#fileName = root.fileName.split("/")
 
-	return(fileName[len(fileName) - 1])
+	#return(fileName[len(fileName) - 1])
+	return(root.fileName)
 	
 	
 
